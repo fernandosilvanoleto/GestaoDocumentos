@@ -1,0 +1,71 @@
+﻿@model List<DocumentoModel>
+
+@{
+    ViewData["Title"] = "Listagem de Documentos";
+}
+
+<div class="text-center">
+
+    <div class="text-left">
+        <a class="btn btn-primary" role="button" asp-controller="Documento" asp-action="Criar">Adicionar Novo Documento</a>
+    </div>
+    <br />
+
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+    
+    <br />
+
+    <h1 class="display-4">Listagem de Documentos</h1>
+
+    <table class="table table-striped" id="table_documento">
+        <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Tipo de Documento</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (DocumentoModel documento in Model)
+                {
+                    if (documento.Ativo == true)
+                    {
+                        <tr>
+                            <th scope="row">@documento.Id</th>
+                            <td>@documento.Nome</td>
+                            <td>@documento.Descricao</td>
+                            <td>@documento.TipoDocumento</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a role="button" class="btn btn-primary" asp-route-id="@documento.Id" asp-controller="Documento" asp-action="Editar">Editar</a>
+                                    <a role="button" class="btn btn-danger" asp-route-id="@documento.Id" asp-controller="Documento" asp-action="Remover">Remover</a>
+                                    @*<a role="button" class="btn btn-success" asp-route-id="@documento.Id" asp-controller="Documento" asp-action="AtivarDocumento">Ativar</a>*@
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+

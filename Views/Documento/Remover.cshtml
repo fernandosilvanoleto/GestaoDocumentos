@@ -1,0 +1,12 @@
+﻿@model DocumentoModel
+@{
+    ViewData["Title"] = "Confirmação de remoção do Documento";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Remoção de Documentos</h1>
+    <h3 class="display-4">Deseja realmente apagar o documento, @Model.Nome</h3>
+</div>
+
+<a class="btn btn-primary btn-block" asp-controller="Documento" asp-action="Index" asp-route-id="@Model.Id" role="button">Cancelar Remoção</a>
+<a class="btn btn-danger btn-block" asp-controller="Documento" asp-action="RemoverDocumento" asp-route-id="@Model.Id" role="button">Confirmar Remoção</a>

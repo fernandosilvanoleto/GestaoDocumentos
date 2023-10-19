@@ -1,0 +1,77 @@
+﻿@model List<ClienteModel>
+
+@{
+    ViewData["Title"] = "Lista de Clientes";
+}
+
+<div class="text-center">
+
+    <div class="text-left">
+        <a class="btn btn-primary" role="button" asp-controller="Cliente" asp-action="Criar">Adicionar Novo Cliente</a>
+        <a class="btn btn-primary" role="button" asp-controller="Cliente" asp-action="IndexTodosClientes">Visualizar todos os clientes</a>
+    </div>
+    <br />
+
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+    <br />
+
+    <h1 class="display-4">Listagem de Clientes</h1>
+
+    <table class="table table-striped" id="table_documento">
+        <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Data de Nascimento</th>
+                <th scope="col">Sexo</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (ClienteModel cliente in Model)
+                {
+                    if (cliente.Ativo == true)
+                    {
+                    <tr>
+                        <th scope="row">@cliente.Id</th>
+                        <td>@cliente.Nome</td>
+                        <td>@cliente.Email</td>
+                        <td>@cliente.CPF</td>
+                        <td>@cliente.Telefone</td>
+                        <td>@cliente.DataNascimento</td>
+                        <td>@cliente.Sexo</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-primary" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Editar">Editar</a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Remover">Remover</a>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+
