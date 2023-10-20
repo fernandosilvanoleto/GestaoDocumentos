@@ -34,6 +34,7 @@ namespace GestaoDocumentos
 
             services.AddScoped<IDocumentoRepository, DocumentoRepository>();
             services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<IBibliotecarioRepository, BibliotecarioRepository>();
 
         }
 

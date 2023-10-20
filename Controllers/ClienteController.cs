@@ -11,9 +11,11 @@ namespace GestaoDocumentos.Controllers
     public class ClienteController : Controller
     {
         private readonly IClienteRepository _clienteRepository;
-        public ClienteController(IClienteRepository clienteRepository)
+        private readonly IBibliotecarioRepository _bibliotecarioRepository;
+        public ClienteController(IClienteRepository clienteRepository, IBibliotecarioRepository bibliotecarioRepository)
         {
             _clienteRepository = clienteRepository;
+            _bibliotecarioRepository = bibliotecarioRepository;
         }
         public IActionResult Index()
         {
@@ -42,7 +44,7 @@ namespace GestaoDocumentos.Controllers
                 if (ModelState.IsValid)
                 {
                     _clienteRepository.AdicionarCliente(clienteModel);
-                    TempData["MensagemSucesso"] = "Documento cadastrado com sucesso";
+                    TempData["MensagemSucesso"] = "Cliente cadastrado com sucesso";
                     return RedirectToAction("Index");
                 }
 
