@@ -128,7 +128,10 @@ D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.T
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.TagHelpers.output.cache
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.RazorCoreGenerate.cache
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Bibliotecario\Adicionar.cshtml.g.cs
+D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Bibliotecario\Editar.cshtml.g.cs
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Bibliotecario\Index.cshtml.g.cs
+D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Bibliotecario\IndexTodosBibliotecarios.cshtml.g.cs
+D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Bibliotecario\Remover.cshtml.g.cs
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Cliente\Criar.cshtml.g.cs
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Cliente\Editar.cshtml.g.cs
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Cliente\Index.cshtml.g.cs
@@ -138,6 +141,7 @@ D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Docume
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Documento\Editar.cshtml.g.cs
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Documento\Index.cshtml.g.cs
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Documento\Remover.cshtml.g.cs
+D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Emprestimo\Index.cshtml.g.cs
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
@@ -153,6 +157,3 @@ D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.d
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\ref\GestaoDocumentos.dll
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.pdb
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.genruntimeconfig.cache
-D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Bibliotecario\Editar.cshtml.g.cs
-D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Bibliotecario\IndexTodosBibliotecarios.cshtml.g.cs
-D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Bibliotecario\Remover.cshtml.g.cs
