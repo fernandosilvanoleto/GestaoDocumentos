@@ -1,1 +1,77 @@
-﻿
+﻿@model List<EmprestimoModel>
+
+@{
+    ViewData["Title"] = "Empréstimos ativos";
+}
+
+<div class="text-center">
+
+    <div class="text-left">
+        <a class="btn btn-primary" role="button" asp-controller="Emprestimo" asp-action="Adicionar">Adicionar novo empréstimos</a>
+        <a class="btn btn-primary" role="button" asp-controller="Emprestimo" asp-action="IndexTodosEmprestimos">Visualizar todos os empréstimos</a>
+    </div>
+    <br />
+
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+    <br />
+
+    <h1 class="display-4">Listagem de Emprestimos</h1>
+
+    <table class="table table-striped" id="table_documento">
+        <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Nome Personalizado</th>
+                <th scope="col">Data do Empréstimo</th>
+                <th scope="col">Data de Devolucao</th>
+                <th scope="col">Observação</th>
+                <th scope="col">Status do Emprestimo</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (EmprestimoModel emprestimo in Model)
+                {
+                    if (emprestimo.Ativo == true)
+                    {
+                        <tr>
+                            <th scope="row">@emprestimo.Id</th>
+                            <td>@emprestimo.Cliente.Nome</td>
+                            <td>@emprestimo.NomePersonalizado</td>
+                            <td>@emprestimo.DataHora</td>
+                            <td>@emprestimo.DataDevolucao</td>
+                            <td>@emprestimo.Observacao</td>
+                            <td>@emprestimo.StatusEmprestimo</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a role="button" class="btn btn-primary" asp-route-id="@emprestimo.Id" asp-controller="Emprestimo" asp-action="Editar">Editar</a>
+                                    <a role="button" class="btn btn-danger" asp-route-id="@emprestimo.Id" asp-controller="Emprestimo" asp-action="Remover">Remover</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+

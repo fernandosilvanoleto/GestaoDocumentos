@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GestaoDocumentos.Repository.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,17 @@ namespace GestaoDocumentos.Controllers
 {
     public class EmprestimoController : Controller
     {
+        private readonly IEmprestimoRepository _emprestimoRepository;
+
+        public EmprestimoController(IEmprestimoRepository emprestimoRepository)
+        {
+            _emprestimoRepository = emprestimoRepository;
+        }
         public IActionResult Index()
         {
-            return View();
+            var emprestimos = _emprestimoRepository.BuscarTodosEmprestimosAtivos();
+
+            return View(emprestimos);
         }
     }
 }

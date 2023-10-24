@@ -1,4 +1,5 @@
-﻿using GestaoDocumentos.Models;
+﻿using GestaoDocumentos.Data;
+using GestaoDocumentos.Models;
 using GestaoDocumentos.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,12 @@ namespace GestaoDocumentos.Repository.Repositories
 {
     public class EmprestimoRepository : IEmprestimoRepository
     {
+        private readonly BancoContext _bancoContext;
+
+        public EmprestimoRepository(BancoContext bancoContext)
+        {
+            _bancoContext = bancoContext;
+        }
         public EmprestimoModel AdicionarEmprestimo(EmprestimoModel emprestimo)
         {
             throw new NotImplementedException();
@@ -31,7 +38,7 @@ namespace GestaoDocumentos.Repository.Repositories
 
         public List<EmprestimoModel> BuscarTodosEmprestimosAtivos()
         {
-            throw new NotImplementedException();
+            return _bancoContext.Emprestimos.Where(e => e.Ativo == true).ToList();
         }
 
         public EmprestimoModel EditarEmprestimo(EmprestimoModel emprestimo)
