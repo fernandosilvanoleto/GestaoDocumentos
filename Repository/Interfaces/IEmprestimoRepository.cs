@@ -11,8 +11,8 @@ namespace GestaoDocumentos.Repository.Interfaces
         List<EmprestimoModel> BuscarTodosEmprestimos();
         List<EmprestimoModel> BuscarTodosEmprestimosAtivos();
         EmprestimoModel ListaPorIdEmprestimo(int idEmprestimo);
-        EmprestimoModel ListaPorIdClientesEmprestimos(int idCliente);
-        EmprestimoModel ListaPorIdBibliotecarioEmprestimos(int IdBibliotecario);
+        List<EmprestimoModel> ListaPorIdClientesEmprestimos(int idCliente);
+        List<EmprestimoModel> ListaPorIdBibliotecarioEmprestimos(int IdBibliotecario);
         EmprestimoModel EditarEmprestimo(EmprestimoModel emprestimo);
         EmprestimoModel AdicionarEmprestimo(EmprestimoModel emprestimo);
         bool AjustarStatusEmprestimo(int idEmprestimo, int opcaoStatus);
