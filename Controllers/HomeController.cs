@@ -21,6 +21,11 @@ namespace GestaoDocumentos.Controllers
             return View(home);
         }
 
+        public IActionResult Login()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
