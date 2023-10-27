@@ -114,6 +114,7 @@ D:\apps\C#\GestaoDocumentos\GestaoDocumentos\bin\Debug\net5.0\runtimes\win-arm\l
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.csprojAssemblyReference.cache
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.GeneratedMSBuildEditorConfig.editorconfig
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.AssemblyInfoInputs.cache
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.AssemblyInfo.cs
@@ -143,6 +144,7 @@ D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Docume
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Documento\Remover.cshtml.g.cs
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Emprestimo\Index.cshtml.g.cs
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
+D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Home\Login.cshtml.g.cs
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -157,5 +159,3 @@ D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.d
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\ref\GestaoDocumentos.dll
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.pdb
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.genruntimeconfig.cache
-D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.csprojAssemblyReference.cache
-D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Home\Login.cshtml.g.cs

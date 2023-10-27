@@ -1,4 +1,5 @@
 ﻿using GestaoDocumentos.Models;
+using GestaoDocumentos.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,6 +12,13 @@ namespace GestaoDocumentos.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IClienteRepository _clienteRepository;
+
+        public HomeController(IClienteRepository clienteRepository)
+        {
+            _clienteRepository = clienteRepository;
+        }
+
         public IActionResult Index()
         {
             HomeModel home = new HomeModel();
@@ -24,6 +32,21 @@ namespace GestaoDocumentos.Controllers
         public IActionResult Login()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult LoginCliente(LoginModel loginModel)
+        {
+            if (loginModel != null)
+            {
+                ClienteModel clienteModel = _clienteRepository.LoginCliente(loginModel);
+
+                return View("Index", clienteModel);
+            }
+            else
+            {
+                return View("Login");
+            }
         }
 
         public IActionResult Privacy()

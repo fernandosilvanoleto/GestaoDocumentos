@@ -129,6 +129,38 @@ namespace GestaoDocumentos.Repository.Repositories
             }
 
             return false;
-        }        
+        }
+
+        public ClienteModel LoginCliente(LoginModel loginModel)
+        {
+            if ((!string.IsNullOrEmpty(loginModel.Email)) && (!string.IsNullOrEmpty(loginModel.Senha)))
+            {
+                try
+                {
+                    ClienteModel clienteModel = _bancoContext.Clientes
+                                                    .Where(
+                                                       c => c.Email == loginModel.Email &&
+                                                       c.Senha == loginModel.Senha
+                                                    ).FirstOrDefault();
+
+                    if (clienteModel != null && clienteModel.Id > 0)
+                    {
+                        return clienteModel;
+                    }
+                    else
+                    {
+                        throw new System.Exception("Cliente não encontrado! Por favor, preencher os dados novamente para uma nova busca no sistema.");
+                    }
+                }
+                catch (System.Exception error)
+                {
+                    throw new System.Exception("Houve um erro no login do Cliente. Erro: {0}!", error);
+                }
+            }
+            else
+            {
+                throw new System.Exception("Login ou senha estão nulos! Por favor, preenche os dados corretamente!");
+            }
+        }
     }
 }

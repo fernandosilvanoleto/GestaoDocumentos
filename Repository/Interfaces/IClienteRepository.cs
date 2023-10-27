@@ -12,5 +12,6 @@ namespace GestaoDocumentos.Repository.Interfaces
         ClienteModel EditarCliente(ClienteModel cliente);
         bool RemoverCliente(int idcliente);
         bool AtivarCliente(int idcliente);
+        ClienteModel LoginCliente(LoginModel loginModel);
     }
 }
