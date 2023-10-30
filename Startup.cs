@@ -3,6 +3,7 @@ using GestaoDocumentos.Repository.Interfaces;
 using GestaoDocumentos.Repository.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -28,6 +29,8 @@ namespace GestaoDocumentos
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddSession();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             var connectionString = Configuration.GetConnectionString("GestaoDocumentos"); // USO DO BANCO SQL SERVER PRÓPRIO DO VISUAL STUDIO
             services.AddDbContext<BancoContext>(options => options.UseSqlServer(connectionString));
@@ -56,7 +59,7 @@ namespace GestaoDocumentos
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseSession();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

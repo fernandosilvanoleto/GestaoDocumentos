@@ -1,5 +1,6 @@
 ﻿using GestaoDocumentos.Models;
 using GestaoDocumentos.Repository.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -37,16 +38,33 @@ namespace GestaoDocumentos.Controllers
         [HttpPost]
         public IActionResult LoginCliente(LoginModel loginModel)
         {
-            if (loginModel != null)
+            if (ModelState.IsValid && loginModel != null)
             {
-                ClienteModel clienteModel = _clienteRepository.LoginCliente(loginModel);
+                try
+                {
+                    ClienteModel clienteModel = _clienteRepository.LoginCliente(loginModel);
 
-                return View("Index", clienteModel);
+                    HttpContext.Session.SetString("IdClienteLogado", clienteModel.Id.ToString());
+                    HttpContext.Session.SetString("NomeClienteLogado", clienteModel.Nome);
+
+                    return View("Menu", clienteModel);
+                }
+                catch (Exception)
+                {
+                    TempData["ErrorLogin"] = "Email ou senha incorretos! Tente novamente!";
+                }
+
+                return RedirectToAction("Login");
             }
             else
             {
                 return View("Login");
             }
+        }
+
+        public IActionResult Menu()
+        {
+            return View();
         }
 
         public IActionResult Privacy()

@@ -80,8 +80,8 @@
         @{
             try
             {
-                @*var erro = TempData["ErrorLogin"].ToString();
-                <h5 class="text-danger">@erro</h5>*@
+                var erro = TempData["ErrorLogin"].ToString();
+                <h5 class="text-danger">@erro</h5>
             }
             catch
             {
