@@ -77,16 +77,12 @@
     <form asp-controller="Home" asp-action="LoginCliente" method="post">
         <h2 class="text-center">Login</h2>
 
-        @{
-            try
-            {
-                var erro = TempData["ErrorLogin"].ToString();
-                <h5 class="text-danger">@erro</h5>
-            }
-            catch
-            {
-
-            }
+        @if (TempData["ErrorLogin"] != null)
+        {
+            <div class="alert alert-success" role="alert">
+                <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+                @TempData["ErrorLogin"]
+            </div>
         }
         <div class="form-group">
             <div class="input-group">

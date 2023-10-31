@@ -30,8 +30,17 @@ namespace GestaoDocumentos.Controllers
             return View(home);
         }
 
-        public IActionResult Login()
+        [HttpGet]
+        public IActionResult Login(int? id)
         {
+            if (id != null)
+            {
+                if (id == 0)
+                {
+                    HttpContext.Session.SetString("IdClienteLogado", string.Empty);
+                    HttpContext.Session.SetString("NomeClienteLogado", string.Empty);
+                }
+            }
             return View();
         }
 

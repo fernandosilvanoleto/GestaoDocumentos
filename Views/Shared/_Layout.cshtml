@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.css" rel="stylesheet">
 </head>
-<body>
+<body onload="CarregaUsuarioLogado()">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
@@ -35,6 +35,11 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Emprestimo" asp-action="Index">Empréstimos</a>
                         </li>
                     </ul>
+                    @using Microsoft.AspNetCore.Http
+                    @inject IHttpContextAccessor HttpContextAccessor
+                    <div id="NomeClienteLogado">
+
+                    </div>
                 </div>
             </div>
         </nav>
@@ -55,5 +60,20 @@
     <script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        function CarregaUsuarioLogado() {
+            var nome = '@HttpContextAccessor.HttpContext.Session.GetString("NomeClienteLogado")'
+
+            if (nome != "")
+            {
+                var divNome = document.getElementById("NomeClienteLogado");
+                divNome.innerHTML = "Olá, " + nome + "<a href='../Home/Login/0'>(Sair)</a>";
+            }
+            else
+            {
+
+            }
+        }
+    </script>
 </body>
 </html>
