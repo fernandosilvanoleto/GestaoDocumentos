@@ -31,6 +31,7 @@ namespace GestaoDocumentos.Controllers
             return View(clientes);
         }
 
+        [HttpGet]
         public IActionResult Criar()
         {
             return View();
