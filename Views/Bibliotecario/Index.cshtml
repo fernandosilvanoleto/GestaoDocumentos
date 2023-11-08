@@ -1,1 +1,69 @@
-﻿<h1>Olá!</h1>
+﻿@model List<BibliotecarioModel>
+
+@{
+    ViewData["Title"] = "Lista de Bibliotecário";
+}
+
+<div class="text-center">
+
+    <div class="text-left">
+        <a class="btn btn-block btn-primary" role="button" asp-controller="Bibliotecario" asp-action="Criar">Novo Bibliotecário</a>
+        <a class="btn btn-block btn-primary" role="button" asp-controller="Bibliotecario" asp-action="IndexTodosBibliotecários">Visualizar todos os Bibliotecários</a>
+    </div>
+    <br />
+
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+    <br />
+
+    <h1 class="display-4">Listagem de Bibliotecário</h1>
+
+    <table class="table table-striped" id="table_documento">
+        <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (BibliotecarioModel bibliotecario in Model)
+                {
+                    if (bibliotecario.Ativo == true)
+                    {
+                        <tr>
+                            <th scope="row">@bibliotecario.Id</th>
+                            <td>@bibliotecario.Nome</td>
+                            <td>@bibliotecario.Email</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a role="button" class="btn btn-primary" asp-route-id="@bibliotecario.Id" asp-controller="Bibliotecario" asp-action="Editar">Editar</a>
+                                    <a role="button" class="btn btn-danger" asp-route-id="@bibliotecario.Id" asp-controller="Bibliotecario" asp-action="Remover">Remover</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+
