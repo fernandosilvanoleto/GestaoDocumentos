@@ -15,16 +15,18 @@ namespace GestaoDocumentos.Controllers
         {
             _bibliotecarioRepository = bibliotecarioRepository;
         }
-        public IActionResult Index()
+        public IActionResult Index(int? todosBibliotecarios)
         {
-            var bibliotecarios = _bibliotecarioRepository.BuscarTodosBibliotecarioAtivos();
+            List<BibliotecarioModel> bibliotecarios;
 
-            return View(bibliotecarios);
-        }
-
-        public IActionResult IndexTodosBibliotecarios()
-        {
-            var bibliotecarios = _bibliotecarioRepository.BuscarTodosBibliotecarios();
+            if (todosBibliotecarios == 1)
+            {
+                bibliotecarios = _bibliotecarioRepository.BuscarTodosBibliotecarios();
+            }
+            else
+            {
+                bibliotecarios = _bibliotecarioRepository.BuscarBibliotecarioAtivos();
+            }
 
             return View(bibliotecarios);
         }
@@ -131,7 +133,7 @@ namespace GestaoDocumentos.Controllers
                     }
                 }
 
-                return RedirectToAction("IndexTodosBibliotecarios");
+                return RedirectToAction("Index");
             }
             catch (Exception error)
             {

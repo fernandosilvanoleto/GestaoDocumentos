@@ -1,1 +1,12 @@
-﻿<h1>Remoção</h1>
+﻿@model BibliotecarioModel
+@{
+    ViewData["Title"] = "Confirmação de remoção do Bibliotecário";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Excluir Bibliotecário</h1>
+    <h3 class="display-4">Deseja realmente excluir o Bibliotecário(a), @Model.Nome</h3>
+</div>
+
+<a class="btn btn-primary btn-block" asp-controller="Bibliotecario" asp-action="Index" asp-route-todosBibliotecarios="0" role="button">Cancelar Remoção</a>
+<a class="btn btn-danger btn-block" asp-controller="Bibliotecario" asp-action="RemoverBibliotecario" asp-route-id="@Model.Id" role="button">Confirmar Remoção</a>

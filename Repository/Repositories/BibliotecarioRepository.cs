@@ -39,7 +39,7 @@ namespace GestaoDocumentos.Repository.Repositories
             }
         }        
 
-        public List<BibliotecarioModel> BuscarTodosBibliotecarioAtivos()
+        public List<BibliotecarioModel> BuscarBibliotecarioAtivos()
         {
             return _bancoContext.Bilbiotecarios.Where(b => b.Ativo == true).OrderBy(b => b.Nome).ToList();
         }

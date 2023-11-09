@@ -9,7 +9,7 @@ namespace GestaoDocumentos.Repository.Interfaces
     public interface IBibliotecarioRepository
     {
         List<BibliotecarioModel> BuscarTodosBibliotecarios();
-        List<BibliotecarioModel> BuscarTodosBibliotecarioAtivos();
+        List<BibliotecarioModel> BuscarBibliotecarioAtivos();
         BibliotecarioModel ListarPorIdBibliotecario(int idBibliotecario);
         BibliotecarioModel AdicionarBibliotecario(BibliotecarioModel bibliotecario);
         BibliotecarioModel EditarBibliotecario(BibliotecarioModel bibliotecario);
