@@ -22,6 +22,8 @@ namespace GestaoDocumentos.Repository.Repositories
                 if (livro != null)
                 {
                     livro.Ativo = true;
+                    livro.StatusLivro = 1;
+                    livro.TipoLivro = 1;
 
                     _bancoContext.Livros.Add(livro);
                     _bancoContext.SaveChanges();
