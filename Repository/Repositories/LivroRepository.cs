@@ -57,7 +57,7 @@ namespace GestaoDocumentos.Repository.Repositories
             }
             else
             {
-                throw new System.Exception("Houve um erro na edição de status do Livro! A Entidade Livro ou Opção estão nulas!");                
+                throw new System.Exception("Houve um erro na edição de status do Livro! A Entidade Livro ou Opção estão nulas!");
             }
         }
 
