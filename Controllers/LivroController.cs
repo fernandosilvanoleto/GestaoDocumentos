@@ -105,6 +105,22 @@ namespace GestaoDocumentos.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult Remover(int idLivro)
+        {
+            if (idLivro >= 0)
+            {
+                var livro = _livroRepository.LivroPorIdUnico(idLivro);
+                if (livro != null)
+                {
+                    return View(livro);
+                }
+            }
+
+            TempData["MensagemErro"] = $"Ops! Deu um erro ao remover o Livro";
+            return RedirectToAction("Index");
+        }
+
         public IActionResult AtualizarStatus(int idLivro, int opcaoStatus)
         {
             if (idLivro >= 0 && opcaoStatus >= 0)
