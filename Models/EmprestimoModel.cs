@@ -19,6 +19,9 @@ namespace GestaoDocumentos.Models
         public string StatusEmprestimo { get; set; }
         public bool Ativo { get; set; }
 
+        public List<EmprestimoLivroModel> LivrosEmprestados { get; set; }
+
+
 
     }
 }

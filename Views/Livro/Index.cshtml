@@ -40,9 +40,10 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Descrição</th>
                 <th scope="col">Preço Unitário (Atual)</th>
-                <th scope="col">Quantidade no Estoque</th>
+                <th scope="col">Quantidade em Estoque</th>
                 <th scope="col">Ativo</th>
                 <th scope="col">Tipo de Livro</th>
+                <th scope="col">Foto</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -53,21 +54,22 @@
                 {
                     if (livro.Ativo == true)
                     {
-                        <tr>
-                            <th scope="row">@livro.Id</th>
-                            <td>@livro.Nome</td>
-                            <td>@livro.Descricao</td>
-                            <td>@livro.PrecoUnitario</td>
-                            <td>@livro.QuantidadeEstoque</td>
-                            <td>@livro.Ativo</td>
-                            <td>@livro.TipoLivro</td>
-                            <td>
-                                <div class="btn-group" role="group">
-                                    <a role="button" class="btn btn-primary" asp-route-id="@livro.Id" asp-controller="Livro" asp-action="Editar">Editar</a>
-                                    <a role="button" class="btn btn-danger"  asp-route-idLivro="@livro.Id" asp-controller="Livro" asp-action="Remover">Remover</a>
-                                </div>
-                            </td>
-                        </tr>
+            <tr>
+                <th scope="row">@livro.Id</th>
+                <td>@livro.Nome</td>
+                <td>@livro.Descricao</td>
+                <td>@livro.PrecoUnitario</td>
+                <td>@livro.QuantidadeEstoque</td>
+                <td>@livro.Ativo</td>
+                <td>@livro.TipoLivro</td>
+                <td><img src="@livro.ArquivoFile" width="50" height="50"/></td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a role="button" class="btn btn-primary" asp-route-id="@livro.Id" asp-controller="Livro" asp-action="Editar">Editar</a>
+                        <a role="button" class="btn btn-danger" asp-route-idLivro="@livro.Id" asp-controller="Livro" asp-action="Remover">Remover</a>
+                    </div>
+                </td>
+            </tr>
                     }
                 }
             }

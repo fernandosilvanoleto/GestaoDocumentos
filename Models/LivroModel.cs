@@ -26,5 +26,7 @@ namespace GestaoDocumentos.Models
         public bool Ativo { get; set; }
         public int StatusLivro { get; set; }
         public int TipoLivro { get; set; }
+
+        public List<EmprestimoLivroModel> LivrosEmprestados { get; set; }
     }
 }

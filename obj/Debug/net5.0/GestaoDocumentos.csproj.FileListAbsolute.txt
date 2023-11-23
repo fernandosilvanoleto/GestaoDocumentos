@@ -147,7 +147,10 @@ D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Home\L
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Home\Menu.cshtml.g.cs
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Livro\Adicionar.cshtml.g.cs
+D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Livro\Editar.cshtml.g.cs
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Livro\Index.cshtml.g.cs
+D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Livro\IndexTodosLivros.cshtml.g.cs
+D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Livro\Remover.cshtml.g.cs
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -161,7 +164,3 @@ D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.d
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\ref\GestaoDocumentos.dll
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.pdb
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.genruntimeconfig.cache
-D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Livro\Editar.cshtml.g.cs
-D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Livro\IndexTodosLivros.cshtml.g.cs
-D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Livro\Remover.cshtml.g.cs
-D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.csprojAssemblyReference.cache

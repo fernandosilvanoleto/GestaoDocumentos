@@ -15,6 +15,7 @@ namespace GestaoDocumentos.Data
         public DbSet<BibliotecarioModel> Bilbiotecarios { get; set; }
         public DbSet<EmprestimoModel> Emprestimos { get; set; }
         public DbSet<LivroModel> Livros { get; set; }
+        public DbSet<EmprestimoLivroModel> EmprestimoLivros { get; set; }
 
         public BancoContext(DbContextOptions<BancoContext> options) : base(options) 
         {
