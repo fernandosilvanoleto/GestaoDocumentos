@@ -11,10 +11,14 @@ namespace GestaoDocumentos.Controllers
     public class EmprestimoController : Controller
     {
         private readonly IEmprestimoRepository _emprestimoRepository;
+        private readonly IClienteRepository _clienteRepository;
+        private readonly IBibliotecarioRepository _bibliotecarioRepository;
 
-        public EmprestimoController(IEmprestimoRepository emprestimoRepository)
+        public EmprestimoController(IEmprestimoRepository emprestimoRepository, IClienteRepository clienteRepository, IBibliotecarioRepository bibliotecarioRepository)
         {
             _emprestimoRepository = emprestimoRepository;
+            _clienteRepository = clienteRepository;
+            _bibliotecarioRepository = bibliotecarioRepository;
         }
         public IActionResult Index()
         {
@@ -30,13 +34,16 @@ namespace GestaoDocumentos.Controllers
             return View(emprestimos);
         }
 
-        public IActionResult Adicionar()
+        public IActionResult Registrar()
         {
+            ViewBag.ListaClientes_EmEmprestimo = _clienteRepository.BuscarTodosClientesAtivos();
+            ViewBag.ListaBibliotecarios_EmEmprestimo = _bibliotecarioRepository.BuscarBibliotecarioAtivos();
+
             return View();
         }
 
         [HttpPost]
-        public IActionResult Adicionar(EmprestimoModel emprestimoModel)
+        public IActionResult Registrar(EmprestimoModel emprestimoModel)
         {
             try
             {

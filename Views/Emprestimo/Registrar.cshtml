@@ -1,0 +1,43 @@
+﻿@model EmprestimoModel
+@{
+    ViewData["Title"] = "Adicionar Clientes";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Adicionar Clientes</h1>
+</div>
+
+<form asp-controller="Emprestimo" asp-action="Registrar" method="post">
+    <div class="form-group">
+        <label for="nomeUserView">Cliente</label>
+        <select asp-for="IdClienteCH" class="form-control">
+            @{
+                foreach (var cliente in (List<ClienteModel>)ViewBag.ListaClientes_EmEmprestimo)
+                {
+                    <option value="@cliente.Id">@cliente.Nome</option>
+                }
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="nomeUserView">Bibliotecário</label>
+        <select asp-for="IdBibliotecarioCH" class="form-control">
+            @{
+                foreach (var bibliotecario in (List<BibliotecarioModel>)ViewBag.ListaBibliotecarios_EmEmprestimo)
+                {
+                    <option value="@bibliotecario.Id">@bibliotecario.Nome</option>
+                }
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="nomeUserView">Nome Personalizado</label>
+        <input type="text" asp-for="NomePersonalizado" class="form-control" placeholder="Digite o apelido para o empréstimo">
+        @Html.ValidationMessageFor(x => x.NomePersonalizado)
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+    <a class="btn btn-secondary btn-block" asp-controller="Emprestimo" asp-action="Index" role="button">Voltar</a>
+</form>

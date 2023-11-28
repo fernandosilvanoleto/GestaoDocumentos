@@ -164,3 +164,5 @@ D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.d
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\ref\GestaoDocumentos.dll
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.pdb
 D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.genruntimeconfig.cache
+D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.csprojAssemblyReference.cache
+D:\apps\C#\GestaoDocumentos\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Emprestimo\Registrar.cshtml.g.cs
