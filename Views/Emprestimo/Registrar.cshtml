@@ -4,7 +4,7 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Adicionar Clientes</h1>
+    <h1 class="display-4">Registrar Empréstimos</h1>
 </div>
 
 <form asp-controller="Emprestimo" asp-action="Registrar" method="post">
@@ -32,12 +32,57 @@
         </select>
     </div>
 
+    <label for="nomeUserView">Adicionar Livros</label>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-lg-4">
+                <select class="form-control">
+                    @{
+                        foreach (var livro in (List<LivroModel>)ViewBag.ListaLivros_EmEmprestimo)
+                        {
+                            <option value="@livro.Id">@livro.Nome</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-lg-1">
+                <input type="text" class="form-control" />
+            </div>
+            <div class="col-lg-3">
+                <button type="button" class="btn btn-block btn-primary">Adicionar</button>
+            </div>
+        </div>        
+    </div>
+
+    <br />
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Nome</td>
+                <td>Quantidade</td>
+                <td>Preço Unitário</td>
+                <td>Total</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Teste</td>
+                <td>2</td>
+                <td>R$ 10,00</td>
+                <td>R$ 20,00</td>
+            </tr>
+        </tbody>
+    </table>
+
     <div class="form-group">
         <label for="nomeUserView">Nome Personalizado</label>
         <input type="text" asp-for="NomePersonalizado" class="form-control" placeholder="Digite o apelido para o empréstimo">
         @Html.ValidationMessageFor(x => x.NomePersonalizado)
     </div>
 
-    <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+    <button type="submit" class="btn btn-success btn-block">Registrar</button>
     <a class="btn btn-secondary btn-block" asp-controller="Emprestimo" asp-action="Index" role="button">Voltar</a>
 </form>

@@ -13,12 +13,14 @@ namespace GestaoDocumentos.Controllers
         private readonly IEmprestimoRepository _emprestimoRepository;
         private readonly IClienteRepository _clienteRepository;
         private readonly IBibliotecarioRepository _bibliotecarioRepository;
+        private readonly ILivroRepository _livroRepository;
 
-        public EmprestimoController(IEmprestimoRepository emprestimoRepository, IClienteRepository clienteRepository, IBibliotecarioRepository bibliotecarioRepository)
+        public EmprestimoController(IEmprestimoRepository emprestimoRepository, IClienteRepository clienteRepository, IBibliotecarioRepository bibliotecarioRepository, ILivroRepository livroRepository)
         {
             _emprestimoRepository = emprestimoRepository;
             _clienteRepository = clienteRepository;
             _bibliotecarioRepository = bibliotecarioRepository;
+            _livroRepository = livroRepository;
         }
         public IActionResult Index()
         {
@@ -35,9 +37,10 @@ namespace GestaoDocumentos.Controllers
         }
 
         public IActionResult Registrar()
-        {
-            ViewBag.ListaClientes_EmEmprestimo = _clienteRepository.BuscarTodosClientesAtivos();
-            ViewBag.ListaBibliotecarios_EmEmprestimo = _bibliotecarioRepository.BuscarBibliotecarioAtivos();
+        {            
+            ViewBag.ListaClientes_EmEmprestimo = _clienteRepository.BuscarTodosClientesAtivos(); // View Bag será apresentado em Emprestimo.Registrar.cshtml
+            ViewBag.ListaBibliotecarios_EmEmprestimo = _bibliotecarioRepository.BuscarBibliotecarioAtivos(); // View Bag será apresentado em Emprestimo.Registrar.cshtml
+            ViewBag.ListaLivros_EmEmprestimo = _livroRepository.BuscarTodosLivrosAtivos(); // View Bag será apresentado em Emprestimo.Registrar.cshtml
 
             return View();
         }
