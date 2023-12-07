@@ -45,6 +45,14 @@ namespace GestaoDocumentos.Controllers
             return View();
         }
 
+        [HttpGet]
+        public float LocalizarPrecoUnitario(int idLivro)
+        {
+            var livro = _livroRepository.LivroPorIdUnico(idLivro);
+
+            return livro.PrecoUnitario;
+        }
+
         [HttpPost]
         public IActionResult Registrar(EmprestimoModel emprestimoModel)
         {

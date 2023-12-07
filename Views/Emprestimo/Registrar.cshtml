@@ -36,20 +36,20 @@
     <div class="form-group">
         <div class="row">
             <div class="col-lg-4">
-                <select class="form-control">
+                <select class="form-control" id="sltLivro">
                     @{
                         foreach (var livro in (List<LivroModel>)ViewBag.ListaLivros_EmEmprestimo)
                         {
-                            <option value="@livro.Id">@livro.Nome</option>
+                            <option value="@livro.Id">@livro.Nome | @livro.PrecoUnitario </option>
                         }
                     }
                 </select>
             </div>
             <div class="col-lg-1">
-                <input type="text" class="form-control" />
+                <input type="text" class="form-control" value="1" id="txtQuantidade"/>
             </div>
             <div class="col-lg-3">
-                <button type="button" class="btn btn-block btn-primary">Adicionar</button>
+                <button type="button" class="btn btn-block btn-primary" onclick="AdicionarLivro()">Adicionar</button>
             </div>
         </div>        
     </div>
@@ -66,14 +66,7 @@
                 <td>Total</td>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Teste</td>
-                <td>2</td>
-                <td>R$ 10,00</td>
-                <td>R$ 20,00</td>
-            </tr>
+        <tbody id="listaLivros">
         </tbody>
     </table>
 
@@ -86,3 +79,53 @@
     <button type="submit" class="btn btn-success btn-block">Registrar</button>
     <a class="btn btn-secondary btn-block" asp-controller="Emprestimo" asp-action="Index" role="button">Voltar</a>
 </form>
+
+<script>
+    var Itens = new Object();
+    Itens.Livros = new Array();
+
+    var codigoLivro = document.getElementById("sltLivro");
+    var QtdeLivro = document.getElementById("txtQuantidade");
+    var ListaLivro = document.getElementById("listaLivros");
+
+    function AdicionarLivro() {
+
+        var PrecoUnitario = 0.00;
+
+        if (codigoLivro.value > 0) {
+            $.ajax({
+                url: '/LocalizarPrecoUnitario',
+                datatype: 'json',
+                contentType: "application/json; charset=utf-8",
+                type: "GET",
+                data: JSON.stringify(controller = "Emprestimo", action = "LocalizarPrecoUnitario"),
+                success: function (data) {
+                    PrecoUnitario = data.value;
+                },
+                error: function (error) {
+                    loading(0, "");
+                }
+            });
+        }
+
+        Itens.Livros.push({
+            "CodigoLivro": codigoLivro.value,
+            "DescricaoLivro": codigoLivro.options[codigoLivro.selectedIndex].text,
+            "QtDeProduto": QtdeLivro.value,
+            "PrecoUnitario": PrecoUnitario.value,
+            "Total": "0"
+        });
+
+        var produto = "<tr>" +
+            "<td>" + codigoLivro.value + "</td>" +
+            "<td>" + codigoLivro.options[codigoLivro.selectedIndex].text + "</td>" +
+            "<td>" + QtdeLivro.value + "</td>" +
+            "<td>" + PrecoUnitario.value + "</td>" +
+            "<td>" + codigoLivro.value + "</td>" +
+            "<tr>";
+
+        ListaLivro.innerHTML += produto;
+
+    }
+
+</script>
