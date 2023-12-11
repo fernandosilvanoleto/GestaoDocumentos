@@ -46,11 +46,11 @@ namespace GestaoDocumentos.Controllers
         }
 
         [HttpGet]
-        public float LocalizarPrecoUnitario(int idLivro)
+        public JsonResult LocalizarPrecoUnitario(int id)
         {
-            var livro = _livroRepository.LivroPorIdUnico(idLivro);
+            var livro = _livroRepository.LivroPorIdUnico(id);
 
-            return livro.PrecoUnitario;
+            return Json(livro.PrecoUnitario);
         }
 
         [HttpPost]

@@ -40,7 +40,7 @@
                     @{
                         foreach (var livro in (List<LivroModel>)ViewBag.ListaLivros_EmEmprestimo)
                         {
-                            <option value="@livro.Id">@livro.Nome | @livro.PrecoUnitario </option>
+                            <option value="@livro.Id">@livro.Nome</option>
                         }
                     }
                 </select>
@@ -81,51 +81,90 @@
 </form>
 
 <script>
+    alert("Iniciando");
     var Itens = new Object();
     Itens.Livros = new Array();
 
     var codigoLivro = document.getElementById("sltLivro");
     var QtdeLivro = document.getElementById("txtQuantidade");
     var ListaLivro = document.getElementById("listaLivros");
+    var PrecoUnitarioView = 0;
 
     function AdicionarLivro() {
+        alert('AdicionarLivro - PrecoUnitarioView: ' + PrecoUnitarioView);
 
-        var PrecoUnitario = 0.00;
+        var DescricaoLivro = codigoLivro.options[codigoLivro.selectedIndex].text;
 
-        if (codigoLivro.value > 0) {
-            $.ajax({
-                url: '/LocalizarPrecoUnitario',
-                datatype: 'json',
-                contentType: "application/json; charset=utf-8",
-                type: "GET",
-                data: JSON.stringify(controller = "Emprestimo", action = "LocalizarPrecoUnitario"),
-                success: function (data) {
-                    PrecoUnitario = data.value;
-                },
-                error: function (error) {
-                    loading(0, "");
-                }
-            });
-        }
+        alert("Preço Unitário igual " + PrecoUnitarioView);
+        var total = (PrecoUnitarioView * QtdeLivro.value);
 
         Itens.Livros.push({
             "CodigoLivro": codigoLivro.value,
-            "DescricaoLivro": codigoLivro.options[codigoLivro.selectedIndex].text,
+            "DescricaoLivro": DescricaoLivro,
             "QtDeProduto": QtdeLivro.value,
-            "PrecoUnitario": PrecoUnitario.value,
-            "Total": "0"
+            "PrecoUnitario": PrecoUnitarioView,
+            "Total": total
         });
 
         var produto = "<tr>" +
             "<td>" + codigoLivro.value + "</td>" +
-            "<td>" + codigoLivro.options[codigoLivro.selectedIndex].text + "</td>" +
+            "<td>" + DescricaoLivro + "</td>" +
             "<td>" + QtdeLivro.value + "</td>" +
-            "<td>" + PrecoUnitario.value + "</td>" +
-            "<td>" + codigoLivro.value + "</td>" +
+            "<td>" + PrecoUnitarioView + "</td>" +
+            "<td>" + total + "</td>" +
             "<tr>";
 
         ListaLivro.innerHTML += produto;
 
+    }
+
+    function BuscarPrecoUnitario(idLivro) {
+
+        alert("Olá - Estamos em BuscarPrecoUnitario - Id Livro: " + idLivro);
+
+        if (idLivro > 0) {
+
+            $.ajax({
+                url: '@Url.Action("LocalizarPrecoUnitario", "Emprestimo")',
+                type: 'GET',
+                dataType: 'json',
+                cache: false,
+                data: { 'id': idLivro },
+                success: function (precoUnitario) {
+                    var preco = precoUnitario;
+                    PrecoUnitarioView = preco;
+                    alert("PrecoUnitarioView V2: " + PrecoUnitarioView);
+                    return preco;
+                },
+                error: function () {
+                    alert('Ocorreu um erro ao buscar o Preço Unitário');
+                }
+            });
+        }
+        else {
+            return 0.99;
+        }
+    }
+
+    (function () {
+        document.getElementById('sltLivro').addEventListener('change', function () {
+
+            var idLivro = document.getElementById("sltLivro");
+
+            PrecoUnitarioView = BuscarPrecoUnitario(idLivro.value);
+        })
+    })();
+
+    document.onload(funcaoPaginaCarregada())
+
+    function funcaoPaginaCarregada() {
+        alert("página totalmente carregada!");
+
+        var idLivro = document.getElementById("sltLivro");
+
+        PrecoUnitarioView = BuscarPrecoUnitario(idLivro.value);
+
+        alert("Preço - funcaoPaginaCarregada: " + PrecoUnitarioView);
     }
 
 </script>
