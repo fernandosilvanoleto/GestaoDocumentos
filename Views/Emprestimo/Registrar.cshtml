@@ -46,12 +46,12 @@
                 </select>
             </div>
             <div class="col-lg-1">
-                <input type="text" class="form-control" value="1" id="txtQuantidade"/>
+                <input type="text" class="form-control" value="1" id="txtQuantidade" />
             </div>
             <div class="col-lg-3">
                 <button type="button" class="btn btn-block btn-primary" onclick="AdicionarLivro()">Adicionar</button>
             </div>
-        </div>        
+        </div>
     </div>
 
     <br />
@@ -81,7 +81,6 @@
 </form>
 
 <script>
-    alert("Iniciando");
     var Itens = new Object();
     Itens.Livros = new Array();
 
@@ -91,11 +90,8 @@
     var PrecoUnitarioView = 0;
 
     function AdicionarLivro() {
-        alert('AdicionarLivro - PrecoUnitarioView: ' + PrecoUnitarioView);
-
         var DescricaoLivro = codigoLivro.options[codigoLivro.selectedIndex].text;
 
-        alert("Preço Unitário igual " + PrecoUnitarioView);
         var total = (PrecoUnitarioView * QtdeLivro.value);
 
         Itens.Livros.push({
@@ -119,11 +115,9 @@
     }
 
     function BuscarPrecoUnitario(idLivro) {
-
-        alert("Olá - Estamos em BuscarPrecoUnitario - Id Livro: " + idLivro);
-
+        // CHAMADA AO MÉTODO CONTROLLER DO MVC ATRAVÉS DO JQUERY
+        // Preciso ter o JQUERY REFERENCIADO
         if (idLivro > 0) {
-
             $.ajax({
                 url: '@Url.Action("LocalizarPrecoUnitario", "Emprestimo")',
                 type: 'GET',
@@ -133,7 +127,6 @@
                 success: function (precoUnitario) {
                     var preco = precoUnitario;
                     PrecoUnitarioView = preco;
-                    alert("PrecoUnitarioView V2: " + PrecoUnitarioView);
                     return preco;
                 },
                 error: function () {
@@ -148,23 +141,19 @@
 
     (function () {
         document.getElementById('sltLivro').addEventListener('change', function () {
+            // APÓS SELECIONAR QUALQUER LIVRO EM Adicionar Livros, VAMOS ATUALIZAR O PREÇO UNITÁRIO DO ITEM
 
             var idLivro = document.getElementById("sltLivro");
-
             PrecoUnitarioView = BuscarPrecoUnitario(idLivro.value);
+            document.getElementById("txtQuantidade").value = 1;
         })
     })();
 
-    document.onload(funcaoPaginaCarregada())
-
-    function funcaoPaginaCarregada() {
-        alert("página totalmente carregada!");
-
+    $(document).ready(function () {
+        //AQUI CHAMA ESSA FUNÇÃO ASSIM QUE CARREGA A PÁGINA
         var idLivro = document.getElementById("sltLivro");
 
         PrecoUnitarioView = BuscarPrecoUnitario(idLivro.value);
-
-        alert("Preço - funcaoPaginaCarregada: " + PrecoUnitarioView);
-    }
+    });
 
 </script>
