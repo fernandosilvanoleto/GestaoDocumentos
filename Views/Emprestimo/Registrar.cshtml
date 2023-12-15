@@ -66,9 +66,17 @@
                 <td>Total</td>
             </tr>
         </thead>
+
         <tbody id="listaLivros">
         </tbody>
+
     </table>
+
+    <div style="float: left; font-size:22px">Total: R$</div>
+    <div style="float: left; font-size:22px; margin-left:5px;" id="divTotal">0.00</div>
+
+    <br />
+    <br />
 
     <div class="form-group">
         <label for="nomeUserView">Nome Personalizado</label>
@@ -88,11 +96,13 @@
     var QtdeLivro = document.getElementById("txtQuantidade");
     var ListaLivro = document.getElementById("listaLivros");
     var PrecoUnitarioView = 0;
+    var totalVenda = document.getElementById("divTotal");
 
     function AdicionarLivro() {
         var DescricaoLivro = codigoLivro.options[codigoLivro.selectedIndex].text;
 
         var total = (PrecoUnitarioView * QtdeLivro.value);
+        total = Math.round(total * 100) / 100;
 
         Itens.Livros.push({
             "CodigoLivro": codigoLivro.value,
@@ -106,12 +116,12 @@
             "<td>" + codigoLivro.value + "</td>" +
             "<td>" + DescricaoLivro + "</td>" +
             "<td>" + QtdeLivro.value + "</td>" +
-            "<td>" + PrecoUnitarioView + "</td>" +
-            "<td>" + total + "</td>" +
+            "<td>R$ " + PrecoUnitarioView + "</td>" +
+            "<td>R$ " + total + "</td>" +
             "<tr>";
 
         ListaLivro.innerHTML += produto;
-
+        totalVenda.innerHTML += totalVenda.innerText * 1 + total;
     }
 
     function BuscarPrecoUnitario(idLivro) {
