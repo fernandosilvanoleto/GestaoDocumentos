@@ -84,6 +84,8 @@
         @Html.ValidationMessageFor(x => x.NomePersonalizado)
     </div>
 
+    <textarea asp-for="LivrosEmprestados" id="ListaLivrosView"></textarea>
+
     <button type="submit" class="btn btn-success btn-block">Registrar</button>
     <a class="btn btn-secondary btn-block" asp-controller="Emprestimo" asp-action="Index" role="button">Voltar</a>
 </form>
@@ -97,6 +99,7 @@
     var ListaLivro = document.getElementById("listaLivros");
     var PrecoUnitarioView = 0;
     var totalVenda = document.getElementById("divTotal");
+    var listaLivrosView = document.getElementById("ListaLivrosView");
 
     function AdicionarLivro() {
         var DescricaoLivro = codigoLivro.options[codigoLivro.selectedIndex].text;
@@ -112,6 +115,8 @@
             "Total": total
         });
 
+        listaLivrosView.innerHTML = JSON.stringify(Itens.Livros);
+
         var produto = "<tr>" +
             "<td>" + codigoLivro.value + "</td>" +
             "<td>" + DescricaoLivro + "</td>" +
@@ -121,7 +126,8 @@
             "<tr>";
 
         ListaLivro.innerHTML += produto;
-        totalVenda.innerHTML += totalVenda.innerText * 1 + total;
+        var totalGeral = Math.round((totalVenda.innerText * 1 + total) * 100) / 100;
+        totalVenda.innerHTML = totalGeral;
     }
 
     function BuscarPrecoUnitario(idLivro) {
