@@ -84,7 +84,19 @@
         @Html.ValidationMessageFor(x => x.NomePersonalizado)
     </div>
 
-    <textarea asp-for="LivrosEmprestados" id="ListaLivrosView"></textarea>
+    <label for="ObservacaoView">Observações:</label>
+    <div class="form-group">
+        <textarea asp-for="Observacao" class="form-control"></textarea>
+        @Html.ValidationMessageFor(x => x.Observacao)
+    </div>
+
+    <label for="DataDevolucaoView">Data de Devolução:</label>
+    <div class="form-group">
+        <input type="date" asp-for="DataDevolucao" class="form-control" placeholder="Digite a Data de Devolução">
+        @Html.ValidationMessageFor(x => x.DataDevolucao)
+    </div>
+
+    <textarea asp-for="LivrosEmprestadosModel_View" id="ListaLivrosView"></textarea>
 
     <button type="submit" class="btn btn-success btn-block">Registrar</button>
     <a class="btn btn-secondary btn-block" asp-controller="Emprestimo" asp-action="Index" role="button">Voltar</a>

@@ -60,7 +60,10 @@ namespace GestaoDocumentos.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _emprestimoRepository.AdicionarEmprestimo(emprestimoModel);
+                    // ADICIONAR EMPRÉSTIMO PRIMEIRO
+                    EmprestimoModel emprestimoCadastrado = _emprestimoRepository.AdicionarEmprestimo(emprestimoModel);
+
+                   
                     TempData["MensagemSucesso"] = "Empréstmo cadastrado com sucesso";
                     return RedirectToAction("Index");
                 }

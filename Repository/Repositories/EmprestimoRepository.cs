@@ -23,6 +23,8 @@ namespace GestaoDocumentos.Repository.Repositories
                 try
                 {
                     emprestimo.Ativo = true;
+                    emprestimo.DataHora = DateTime.Now;
+                    emprestimo.StatusEmprestimo = "Ativo";
 
                     _bancoContext.Emprestimos.Add(emprestimo);
                     _bancoContext.SaveChanges();

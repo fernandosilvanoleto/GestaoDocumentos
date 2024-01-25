@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,6 +21,9 @@ namespace GestaoDocumentos.Models
         public bool Ativo { get; set; }
 
         public List<EmprestimoLivroModel> LivrosEmprestados { get; set; }
+
+        [NotMapped]
+        public string LivrosEmprestadosModel_View { get; set; }
 
 
 
