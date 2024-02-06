@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TxiEakC7Nqi2IFwhQk8OFWEtSleUHyJpi4iipyGyzphIehjwgmjL6TQt4aMicwym4I5lBTWheU+KG/kfzSUoVg==",
+  "dgSpecHash": "s/XIVK0jp/rOHoLFoj8zazmus4X47HgA+SsZvBTAkEzf88DJdGibQyVGe+uQnmd0nZOHQyxnalkg5m9h/NNMHg==",
   "success": true,
-  "projectFilePath": "D:\\apps\\C#\\GestaoDocumentos\\GestaoDocumentos\\GestaoDocumentos.csproj",
+  "projectFilePath": "D:\\apps\\asp_net\\GestaoDocumentos\\GestaoDocumentos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Fernando\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Fernando\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

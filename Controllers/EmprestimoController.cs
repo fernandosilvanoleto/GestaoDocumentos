@@ -63,7 +63,10 @@ namespace GestaoDocumentos.Controllers
                     // ADICIONAR EMPRÉSTIMO PRIMEIRO
                     EmprestimoModel emprestimoCadastrado = _emprestimoRepository.AdicionarEmprestimo(emprestimoModel);
 
-                   
+                    if (emprestimoCadastrado != null)
+                    {
+
+                    }
                     TempData["MensagemSucesso"] = "Empréstmo cadastrado com sucesso";
                     return RedirectToAction("Index");
                 }

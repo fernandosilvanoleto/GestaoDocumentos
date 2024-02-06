@@ -7182,11 +7182,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\apps\\C#\\GestaoDocumentos\\GestaoDocumentos\\GestaoDocumentos.csproj",
+      "projectUniqueName": "D:\\apps\\asp_net\\GestaoDocumentos\\GestaoDocumentos.csproj",
       "projectName": "GestaoDocumentos",
-      "projectPath": "D:\\apps\\C#\\GestaoDocumentos\\GestaoDocumentos\\GestaoDocumentos.csproj",
+      "projectPath": "D:\\apps\\asp_net\\GestaoDocumentos\\GestaoDocumentos.csproj",
       "packagesPath": "C:\\Users\\Fernando\\.nuget\\packages\\",
-      "outputPath": "D:\\apps\\C#\\GestaoDocumentos\\GestaoDocumentos\\obj\\",
+      "outputPath": "D:\\apps\\asp_net\\GestaoDocumentos\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Fernando\\AppData\\Roaming\\NuGet\\NuGet.Config",
