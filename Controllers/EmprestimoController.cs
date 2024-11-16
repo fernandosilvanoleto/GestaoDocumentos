@@ -1,8 +1,10 @@
 ﻿using GestaoDocumentos.Models;
 using GestaoDocumentos.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,13 +13,15 @@ namespace GestaoDocumentos.Controllers
     public class EmprestimoController : Controller
     {
         private readonly IEmprestimoRepository _emprestimoRepository;
+        private readonly IEmprestimoLivroRepository _emprestimoLivroRepository;
         private readonly IClienteRepository _clienteRepository;
         private readonly IBibliotecarioRepository _bibliotecarioRepository;
         private readonly ILivroRepository _livroRepository;
 
-        public EmprestimoController(IEmprestimoRepository emprestimoRepository, IClienteRepository clienteRepository, IBibliotecarioRepository bibliotecarioRepository, ILivroRepository livroRepository)
+        public EmprestimoController(IEmprestimoRepository emprestimoRepository, IEmprestimoLivroRepository emprestimoLivroRepository, IClienteRepository clienteRepository, IBibliotecarioRepository bibliotecarioRepository, ILivroRepository livroRepository)
         {
             _emprestimoRepository = emprestimoRepository;
+            _emprestimoLivroRepository = emprestimoLivroRepository;
             _clienteRepository = clienteRepository;
             _bibliotecarioRepository = bibliotecarioRepository;
             _livroRepository = livroRepository;
@@ -36,6 +40,7 @@ namespace GestaoDocumentos.Controllers
             return View(emprestimos);
         }
 
+        [HttpGet]
         public IActionResult Registrar()
         {            
             ViewBag.ListaClientes_EmEmprestimo = _clienteRepository.BuscarTodosClientesAtivos(); // View Bag será apresentado em Emprestimo.Registrar.cshtml
@@ -61,11 +66,35 @@ namespace GestaoDocumentos.Controllers
                 if (ModelState.IsValid)
                 {
                     // ADICIONAR EMPRÉSTIMO PRIMEIRO
-                    EmprestimoModel emprestimoCadastrado = _emprestimoRepository.AdicionarEmprestimo(emprestimoModel);
+                    //EmprestimoModel emprestimoCadastrado = _emprestimoRepository.AdicionarEmprestimo(emprestimoModel);
 
-                    if (emprestimoCadastrado != null)
+                    if (1 == 1)
                     {
+                        // Itens do Empréstimo
+                        EmprestimoLivroModel emprestimoLivroModel = new EmprestimoLivroModel();
 
+                        // Desserializar o JSON
+                        List<ItemEmprestimoLivroData> emprestimoLivroModels = 
+                            JsonConvert.DeserializeObject<
+                                List<ItemEmprestimoLivroData>>(emprestimoModel.LivrosEmprestadosModel_View);
+
+                        try
+                        {
+                            foreach (var emprestimo in emprestimoLivroModels)
+                            {
+                                emprestimoLivroModel.IdEmprestimoCH = 3; //emprestimoCadastrado.Id;
+                                emprestimoLivroModel.IdLivroCH = int.Parse(emprestimo.CodigoLivro);
+                                emprestimoLivroModel.PrecoUnitarioAlugado = Convert.ToSingle(decimal.Parse(emprestimo.PrecoUnitario, CultureInfo.InvariantCulture));
+                                emprestimoLivroModel.QuantidadeAlugadaPorLivro = int.Parse(emprestimo.QtDeProduto);
+                                emprestimoLivroModel.DataDevolucao = DateTime.Now; //emprestimoCadastrado.DataDevolucao;
+
+                                _emprestimoLivroRepository.AdicionarEmprestimoLivro(emprestimoLivroModel);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new System.Exception("Houve um erro ao adicionar os dados de Empréstimo de Livros! Message: " + ex.Message);
+                        }
                     }
                     TempData["MensagemSucesso"] = "Empréstmo cadastrado com sucesso";
                     return RedirectToAction("Index");
@@ -161,5 +190,15 @@ namespace GestaoDocumentos.Controllers
                 return RedirectToAction("Index");
             }
         }
+    }
+
+    // Classe temporária para Deserialisar um objeto json
+    public class ItemEmprestimoLivroData
+    {
+        public string CodigoLivro { get; set; }
+        public string DescricaoLivro { get; set; }
+        public string QtDeProduto { get; set; }
+        public string PrecoUnitario { get; set; }
+        public string Total { get; set; }
     }
 }
