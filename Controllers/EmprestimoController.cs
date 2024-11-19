@@ -66,11 +66,12 @@ namespace GestaoDocumentos.Controllers
                 if (ModelState.IsValid)
                 {
                     // ADICIONAR EMPRÉSTIMO PRIMEIRO
-                    //EmprestimoModel emprestimoCadastrado = _emprestimoRepository.AdicionarEmprestimo(emprestimoModel);
+                    EmprestimoModel emprestimoCadastrado = _emprestimoRepository.AdicionarEmprestimo(emprestimoModel);
 
-                    if (1 == 1)
+                    if (emprestimoCadastrado != null)
                     {
                         // Itens do Empréstimo
+                        List<EmprestimoLivroModel> listaEmprestimoLivroModel = new List<EmprestimoLivroModel>();
                         EmprestimoLivroModel emprestimoLivroModel = new EmprestimoLivroModel();
 
                         // Desserializar o JSON
@@ -82,13 +83,23 @@ namespace GestaoDocumentos.Controllers
                         {
                             foreach (var emprestimo in emprestimoLivroModels)
                             {
-                                emprestimoLivroModel.IdEmprestimoCH = 3; //emprestimoCadastrado.Id;
+                                emprestimoLivroModel.IdEmprestimoCH = emprestimoCadastrado.Id;
                                 emprestimoLivroModel.IdLivroCH = int.Parse(emprestimo.CodigoLivro);
                                 emprestimoLivroModel.PrecoUnitarioAlugado = Convert.ToSingle(decimal.Parse(emprestimo.PrecoUnitario, CultureInfo.InvariantCulture));
                                 emprestimoLivroModel.QuantidadeAlugadaPorLivro = int.Parse(emprestimo.QtDeProduto);
-                                emprestimoLivroModel.DataDevolucao = DateTime.Now; //emprestimoCadastrado.DataDevolucao;
+                                emprestimoLivroModel.DataDevolucao = emprestimoCadastrado.DataDevolucao;
+                                emprestimoLivroModel.DataHoraEmprestimo = DateTime.Now;
+                                emprestimoLivroModel.Ativo = true;
+                                emprestimoLivroModel.SituacaoAtual = 1;
 
-                                _emprestimoLivroRepository.AdicionarEmprestimoLivro(emprestimoLivroModel);
+                                listaEmprestimoLivroModel.Add(emprestimoLivroModel);
+                            }
+
+                            var registrado = _emprestimoLivroRepository.AdicionarListaEmprestimoLivro(listaEmprestimoLivroModel);
+
+                            if (!registrado)
+                            {
+                                TempData["MensagemErro"] = $"O Empréstmo dos Livros não foram cadastrados com sucesso, tente novamente. Detalhe do erro";
                             }
                         }
                         catch (Exception ex)
@@ -96,7 +107,8 @@ namespace GestaoDocumentos.Controllers
                             throw new System.Exception("Houve um erro ao adicionar os dados de Empréstimo de Livros! Message: " + ex.Message);
                         }
                     }
-                    TempData["MensagemSucesso"] = "Empréstmo cadastrado com sucesso";
+
+                    TempData["MensagemSucesso"] = "Empréstmo de Livro cadastrado com sucesso";
                     return RedirectToAction("Index");
                 }
 

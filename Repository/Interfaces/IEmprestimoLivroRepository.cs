@@ -15,6 +15,7 @@ namespace GestaoDocumentos.Repository.Interfaces
         List<EmprestimoLivroModel> ListaPorIdEmprestimo(int idEmprestimo);
         EmprestimoLivroModel EditarEmprestimoLivro(EmprestimoLivroModel emprestimoLivro);
         EmprestimoLivroModel AdicionarEmprestimoLivro(EmprestimoLivroModel emprestimoLivro);
+        bool AdicionarListaEmprestimoLivro(List<EmprestimoLivroModel> emprestimoLivroModels);
         bool AjustarStatusEmprestimoLivro(int idEmprestimoLivro, int opcaoStatus);
         bool AjustarStatusAtivo(int idEmprestimo, int opcaoStatus);
     }

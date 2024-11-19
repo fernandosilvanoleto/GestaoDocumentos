@@ -21,6 +21,28 @@ namespace GestaoDocumentos.Repository.Repositories
             throw new NotImplementedException();
         }
 
+        public bool AdicionarListaEmprestimoLivro(List<EmprestimoLivroModel> emprestimoLivro)
+        {
+            if (emprestimoLivro != null)
+            {
+                try
+                {
+                    _bancoContext.EmprestimoLivros.AddRange(emprestimoLivro);
+                    _bancoContext.SaveChanges();
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw new System.Exception("Operação interna com falha! Empréstimo do Livro não foi cadastrado com sucesso!", ex);
+                }
+            }
+            else
+            {
+                throw new System.Exception("Operação de adição com falha! Entidade Emprestimo de Lista está vazio!");
+            }
+        }
+
         public bool AjustarStatusAtivo(int idEmprestimo, int opcaoStatus)
         {
             throw new NotImplementedException();
