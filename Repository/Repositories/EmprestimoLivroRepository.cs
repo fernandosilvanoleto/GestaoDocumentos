@@ -21,14 +21,17 @@ namespace GestaoDocumentos.Repository.Repositories
             throw new NotImplementedException();
         }
 
-        public bool AdicionarListaEmprestimoLivro(List<EmprestimoLivroModel> emprestimoLivro)
+        public bool AdicionarListaEmprestimoLivro(List<EmprestimoLivroModel> emprestimoLivros)
         {
-            if (emprestimoLivro != null)
+            if (emprestimoLivros != null)
             {
                 try
                 {
-                    _bancoContext.EmprestimoLivros.AddRange(emprestimoLivro);
-                    _bancoContext.SaveChanges();
+                    foreach (var item in emprestimoLivros)
+                    {
+                        _bancoContext.EmprestimoLivros.Add(item);
+                        _bancoContext.SaveChanges();
+                    }
 
                     return true;
                 }

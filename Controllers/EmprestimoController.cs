@@ -68,11 +68,10 @@ namespace GestaoDocumentos.Controllers
                     // ADICIONAR EMPRÉSTIMO PRIMEIRO
                     EmprestimoModel emprestimoCadastrado = _emprestimoRepository.AdicionarEmprestimo(emprestimoModel);
 
-                    if (emprestimoCadastrado != null)
+                   if (emprestimoCadastrado != null)
                     {
                         // Itens do Empréstimo
                         List<EmprestimoLivroModel> listaEmprestimoLivroModel = new List<EmprestimoLivroModel>();
-                        EmprestimoLivroModel emprestimoLivroModel = new EmprestimoLivroModel();
 
                         // Desserializar o JSON
                         List<ItemEmprestimoLivroData> emprestimoLivroModels = 
@@ -83,6 +82,7 @@ namespace GestaoDocumentos.Controllers
                         {
                             foreach (var emprestimo in emprestimoLivroModels)
                             {
+                                EmprestimoLivroModel emprestimoLivroModel = new EmprestimoLivroModel();
                                 emprestimoLivroModel.IdEmprestimoCH = emprestimoCadastrado.Id;
                                 emprestimoLivroModel.IdLivroCH = int.Parse(emprestimo.CodigoLivro);
                                 emprestimoLivroModel.PrecoUnitarioAlugado = Convert.ToSingle(decimal.Parse(emprestimo.PrecoUnitario, CultureInfo.InvariantCulture));
