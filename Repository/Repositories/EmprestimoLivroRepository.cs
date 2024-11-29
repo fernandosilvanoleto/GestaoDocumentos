@@ -1,6 +1,8 @@
 ﻿using GestaoDocumentos.Data;
 using GestaoDocumentos.Models;
+using GestaoDocumentos.Models.ViewModels.EmprestimoLivros;
 using GestaoDocumentos.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,7 +60,25 @@ namespace GestaoDocumentos.Repository.Repositories
 
         public List<EmprestimoLivroModel> BuscarTodosEmprestimosLivro()
         {
-            throw new NotImplementedException();
+            List<EmprestimoLivroModel> emprestimoLivroModels = null;
+
+            try
+            {
+                var listaPreOficial = _bancoContext.EmprestimoLivros
+                    .Include(empres => empres.Emprestimo)
+                    .Include(livros => livros.Livro).ToList();
+
+                if (listaPreOficial != null)
+                {
+                    var listaEmprestimoLivrosViewModel = new ListaEmprestimoLivrosViewModel();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new System.Exception("Erro ao listar Empréstimo de Livro! Mensagem: ", ex);
+            }
+
+            return emprestimoLivroModels;
         }
 
         public List<EmprestimoLivroModel> BuscarTodosEmprestimosLivroAtivos()
