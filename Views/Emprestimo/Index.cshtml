@@ -4,6 +4,18 @@
     ViewData["Title"] = "Empréstimos ativos";
 }
 
+<style>
+    /* Mudar o cursor para pointer (mãozinha) */
+    tr {
+        cursor: pointer;
+    }
+
+        /* Alterar a cor de fundo ao passar o mouse */
+        tr:hover {
+            background-color: #f0f8ff; /* Cor de fundo clara, pode ajustar conforme necessário */
+        }
+</style>
+
 <div class="text-center">
 
     <div class="text-left">
@@ -52,7 +64,7 @@
                 {
                     if (emprestimo.Ativo == true)
                     {
-                        <tr>
+                        <tr onclick="window.location.href='@Url.Action("VisualizarItensEmprestimo", "Emprestimo", new { idEmprestimoLivro = emprestimo.Id })'">
                             <th scope="row">@emprestimo.Id</th>
                             <td>Fernando</td>
                             <td>@emprestimo.NomePersonalizado</td>

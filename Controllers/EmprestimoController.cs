@@ -202,6 +202,34 @@ namespace GestaoDocumentos.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+        public IActionResult VisualizarItensEmprestimo(int idEmprestimoLivro)
+        {
+            try
+            {
+                if (idEmprestimoLivro > 0)
+                {
+                    var emprestimo = _emprestimoRepository.ListaPorIdEmprestimo(idEmprestimoLivro);
+
+                    if (emprestimo != null)
+                    {
+                        return View();
+                    }
+
+                    return View();
+                }
+                else
+                {
+                    TempData["MensagemSucesso"] = "Empréstmo de Livro cadastrado com sucesso";
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception error)
+            {
+                TempData["MensagemErro"] = $"Ops! Erro ao consultar itens de Empréstimo. Detalhe do erro: {error.Message}";
+                return RedirectToAction("Index");
+            }
+        }
     }
 
     // Classe temporária para Deserialisar um objeto json

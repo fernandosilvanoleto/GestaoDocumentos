@@ -334,3 +334,5 @@ D:\apps\asp_net\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.dll
 D:\apps\asp_net\GestaoDocumentos\obj\Debug\net5.0\ref\GestaoDocumentos.dll
 D:\apps\asp_net\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.pdb
 D:\apps\asp_net\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.genruntimeconfig.cache
+D:\apps\asp_net\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\EmprestimoLivro\Index.cshtml.g.cs
+D:\apps\asp_net\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Emprestimo\VisualizarItensEmprestimo.cshtml.g.cs
