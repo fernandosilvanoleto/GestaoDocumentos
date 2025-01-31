@@ -13,6 +13,7 @@ namespace GestaoDocumentos.Repository.Repositories
     public class EmprestimoLivroRepository : IEmprestimoLivroRepository
     {
         private readonly BancoContext _bancoContext;
+        private readonly ListaEmprestimoLivrosViewModel _listaEmprestimoLivrosViewModel;
 
         public EmprestimoLivroRepository(BancoContext bancoContext)
         {
@@ -98,7 +99,25 @@ namespace GestaoDocumentos.Repository.Repositories
 
         public EmprestimoLivroModel ListaPorIdEmprestimoLivro(int idEmprestimoLivro)
         {
-            throw new NotImplementedException();
+            EmprestimoLivroModel emprestimoLivroModels = null;
+
+            try
+            {
+                var listaEmprestimo = _bancoContext.EmprestimoLivros
+                    .Include(empres => empres.Emprestimo)
+                    .Include(livros => livros.Livro)
+                    .Where(empLivro => empLivro.IdEmprestimoCH == idEmprestimoLivro)
+                    .ToList();
+
+                // CRIAR UMA VIEWMODEL PARA EXIBIR O EMPRESTIMO E O LIVRO CORRESPONDENTE -- DESENHAR NA MÃO
+                // CRIAR TODA A ESTRUTURA AQUI E DAR PARA O CONTROLLER TUDO PRONTO PORRA
+            }
+            catch (Exception ex)
+            {
+                throw new System.Exception("Erro ao listar Empréstimo de Livro! Mensagem: ", ex);
+            }
+
+            return emprestimoLivroModels;
         }
 
         public List<EmprestimoLivroModel> ListaPorIdLivro(int idLivro)

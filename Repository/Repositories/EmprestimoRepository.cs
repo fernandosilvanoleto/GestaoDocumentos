@@ -145,6 +145,8 @@ namespace GestaoDocumentos.Repository.Repositories
             if (idEmprestimo > 0)
             {
                 var emprestimo = _bancoContext.Emprestimos.FirstOrDefault(e => e.Id == idEmprestimo);
+
+                // trazer os dados de clientes aqui
                 if (emprestimo != null)
                 {
                     return emprestimo;
