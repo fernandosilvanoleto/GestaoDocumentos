@@ -10,7 +10,7 @@ namespace GestaoDocumentos.Repository.Interfaces
     {
         List<EmprestimoLivroModel> BuscarTodosEmprestimosLivro();
         List<EmprestimoLivroModel> BuscarTodosEmprestimosLivroAtivos();
-        EmprestimoLivroModel ListaPorIdEmprestimoLivro(int idEmprestimoLivro);
+        EmprestimoLivroModel ListaPorIdEmprestimoLivro(EmprestimoModel emprestimo);
         List<EmprestimoLivroModel> ListaPorIdLivro(int idLivro);
         List<EmprestimoLivroModel> ListaPorIdEmprestimo(int idEmprestimo);
         EmprestimoLivroModel EditarEmprestimoLivro(EmprestimoLivroModel emprestimoLivro);

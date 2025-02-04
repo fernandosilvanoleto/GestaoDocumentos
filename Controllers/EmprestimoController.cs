@@ -213,7 +213,7 @@ namespace GestaoDocumentos.Controllers
 
                     if (emprestimo != null)
                     {
-                        EmprestimoLivroModel emprestimoLivro = _emprestimoLivroRepository.ListaPorIdEmprestimoLivro(emprestimo.Id);
+                        EmprestimoLivroModel emprestimoLivro = _emprestimoLivroRepository.ListaPorIdEmprestimoLivro(emprestimo);
 
                         
 

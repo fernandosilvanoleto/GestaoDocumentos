@@ -97,19 +97,25 @@ namespace GestaoDocumentos.Repository.Repositories
             throw new NotImplementedException();
         }
 
-        public EmprestimoLivroModel ListaPorIdEmprestimoLivro(int idEmprestimoLivro)
+        public EmprestimoLivroModel ListaPorIdEmprestimoLivro(EmprestimoModel emprestimo)
         {
             EmprestimoLivroModel emprestimoLivroModels = null;
+            ListaEmprestimoLivrosViewModel listaEmprestimoLivrosViewModel = null;
 
             try
             {
                 var listaEmprestimo = _bancoContext.EmprestimoLivros
                     .Include(empres => empres.Emprestimo)
                     .Include(livros => livros.Livro)
-                    .Where(empLivro => empLivro.IdEmprestimoCH == idEmprestimoLivro)
+                    .Where(empLivro => empLivro.IdEmprestimoCH == emprestimo.Id)
                     .ToList();
 
                 // CRIAR UMA VIEWMODEL PARA EXIBIR O EMPRESTIMO E O LIVRO CORRESPONDENTE -- DESENHAR NA MÃO
+                listaEmprestimoLivrosViewModel.IdEmprestimo = emprestimo.Id;
+                listaEmprestimoLivrosViewModel.NomeEmprestimo = emprestimo.NomePersonalizado;
+                listaEmprestimoLivrosViewModel.NomeCliente = emprestimo.Cliente.Nome;
+                listaEmprestimoLivrosViewModel.DataEvolucao = emprestimo.DataDevolucao;
+
                 // CRIAR TODA A ESTRUTURA AQUI E DAR PARA O CONTROLLER TUDO PRONTO PORRA
             }
             catch (Exception ex)
