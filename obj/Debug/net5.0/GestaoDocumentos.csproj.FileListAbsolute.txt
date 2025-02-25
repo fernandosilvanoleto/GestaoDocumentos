@@ -282,7 +282,6 @@ D:\apps\asp_net\GestaoDocumentos\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\do
 D:\apps\asp_net\GestaoDocumentos\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 D:\apps\asp_net\GestaoDocumentos\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\apps\asp_net\GestaoDocumentos\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\apps\asp_net\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.csprojAssemblyReference.cache
 D:\apps\asp_net\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.GeneratedMSBuildEditorConfig.editorconfig
 D:\apps\asp_net\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.AssemblyInfoInputs.cache
 D:\apps\asp_net\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.AssemblyInfo.cs
@@ -336,3 +335,4 @@ D:\apps\asp_net\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.pdb
 D:\apps\asp_net\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.genruntimeconfig.cache
 D:\apps\asp_net\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\EmprestimoLivro\Index.cshtml.g.cs
 D:\apps\asp_net\GestaoDocumentos\obj\Debug\net5.0\Razor\Views\Emprestimo\VisualizarItensEmprestimo.cshtml.g.cs
+D:\apps\asp_net\GestaoDocumentos\obj\Debug\net5.0\GestaoDocumentos.csprojAssemblyReference.cache

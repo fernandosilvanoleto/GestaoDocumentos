@@ -27,6 +27,6 @@ namespace GestaoDocumentos.Models
         public int StatusLivro { get; set; }
         public int TipoLivro { get; set; }
 
-        public List<EmprestimoLivroModel> LivrosEmprestados { get; set; }
+        public ICollection<EmprestimoLivroModel> LivrosEmprestados { get; set; } = new List<EmprestimoLivroModel>();
     }
 }

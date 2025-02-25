@@ -20,7 +20,7 @@ namespace GestaoDocumentos.Models
         public string StatusEmprestimo { get; set; }
         public bool Ativo { get; set; }
 
-        public List<EmprestimoLivroModel> LivrosEmprestados { get; set; }
+        public ICollection<EmprestimoLivroModel> LivrosEmprestados { get; set; } = new List<EmprestimoLivroModel>();
 
         [NotMapped]
         public string LivrosEmprestadosModel_View { get; set; }

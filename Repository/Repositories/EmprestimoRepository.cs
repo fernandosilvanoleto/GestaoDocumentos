@@ -1,6 +1,7 @@
 ﻿using GestaoDocumentos.Data;
 using GestaoDocumentos.Models;
 using GestaoDocumentos.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -144,7 +145,10 @@ namespace GestaoDocumentos.Repository.Repositories
         {
             if (idEmprestimo > 0)
             {
-                var emprestimo = _bancoContext.Emprestimos.FirstOrDefault(e => e.Id == idEmprestimo);
+                var emprestimo = _bancoContext.Emprestimos
+                    .Include(cli => cli.Cliente)
+                    .Include(bib => bib.Bibliotecario)
+                    .FirstOrDefault(e => e.Id == idEmprestimo); 
 
                 // trazer os dados de clientes aqui
                 if (emprestimo != null)

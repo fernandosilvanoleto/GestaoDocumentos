@@ -13,7 +13,6 @@ namespace GestaoDocumentos.Repository.Repositories
     public class EmprestimoLivroRepository : IEmprestimoLivroRepository
     {
         private readonly BancoContext _bancoContext;
-        private readonly ListaEmprestimoLivrosViewModel _listaEmprestimoLivrosViewModel;
 
         public EmprestimoLivroRepository(BancoContext bancoContext)
         {
@@ -100,23 +99,34 @@ namespace GestaoDocumentos.Repository.Repositories
         public EmprestimoLivroModel ListaPorIdEmprestimoLivro(EmprestimoModel emprestimo)
         {
             EmprestimoLivroModel emprestimoLivroModels = null;
-            ListaEmprestimoLivrosViewModel listaEmprestimoLivrosViewModel = null;
+            ListaEmprestimoLivrosViewModel listaEmprestimoLivrosViewModel = new ListaEmprestimoLivrosViewModel();
 
             try
             {
-                var listaEmprestimo = _bancoContext.EmprestimoLivros
-                    .Include(empres => empres.Emprestimo)
-                    .Include(livros => livros.Livro)
+                if (emprestimo != null)
+                {
+                    var listaEmprestimos = _bancoContext.EmprestimoLivros
+                    .Include(empLivro => empLivro.Emprestimo)
+                    .Include(empLivro => empLivro.Livro)
                     .Where(empLivro => empLivro.IdEmprestimoCH == emprestimo.Id)
+                    //.ToQueryString();
                     .ToList();
 
-                // CRIAR UMA VIEWMODEL PARA EXIBIR O EMPRESTIMO E O LIVRO CORRESPONDENTE -- DESENHAR NA MÃO
-                listaEmprestimoLivrosViewModel.IdEmprestimo = emprestimo.Id;
-                listaEmprestimoLivrosViewModel.NomeEmprestimo = emprestimo.NomePersonalizado;
-                listaEmprestimoLivrosViewModel.NomeCliente = emprestimo.Cliente.Nome;
-                listaEmprestimoLivrosViewModel.DataEvolucao = emprestimo.DataDevolucao;
+                    //Console.WriteLine(query); // Verifique a saída SQL no console
 
-                // CRIAR TODA A ESTRUTURA AQUI E DAR PARA O CONTROLLER TUDO PRONTO PORRA
+                    // CRIAR UMA VIEWMODEL PARA EXIBIR O EMPRESTIMO E O LIVRO CORRESPONDENTE -- DESENHAR NA MÃO
+                    listaEmprestimoLivrosViewModel.IdEmprestimo = emprestimo.Id;
+                    listaEmprestimoLivrosViewModel.NomeEmprestimo = emprestimo.NomePersonalizado;
+                    listaEmprestimoLivrosViewModel.NomeCliente = emprestimo.Cliente.Nome;
+                    listaEmprestimoLivrosViewModel.NomeBibliotecario = emprestimo.Bibliotecario.Nome;
+                    listaEmprestimoLivrosViewModel.DataEvolucao = emprestimo.DataDevolucao;
+
+                    // CRIAR TODA A ESTRUTURA AQUI E DAR PARA O CONTROLLER TUDO PRONTO PORRA
+                }
+                else
+                {
+                    throw new System.Exception("Erro interno: Objeto de Empréstimo está vazio!");
+                }                
             }
             catch (Exception ex)
             {

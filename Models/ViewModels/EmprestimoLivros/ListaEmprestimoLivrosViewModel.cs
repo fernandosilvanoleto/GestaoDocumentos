@@ -10,6 +10,7 @@ namespace GestaoDocumentos.Models.ViewModels.EmprestimoLivros
         public int IdEmprestimo { get; set; }
         public string NomeEmprestimo { get; set; }
         public string NomeCliente { get; set; }
+        public string NomeBibliotecario { get; set; }
         public DateTime DataEvolucao { get; set; }
 
         public List<LivrosEmprestados> livrosEmprestados = new List<LivrosEmprestados>();

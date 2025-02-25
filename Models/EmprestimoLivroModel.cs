@@ -10,9 +10,9 @@ namespace GestaoDocumentos.Models
     {
         public int Id { get; set; }
         public int IdEmprestimoCH { get; set; }
-        public EmprestimoModel Emprestimo { get; set; }
+        public virtual EmprestimoModel Emprestimo { get; set; }
         public int IdLivroCH { get; set; }
-        public LivroModel Livro { get; set; }
+        public virtual LivroModel Livro { get; set; }
         public DateTime DataHoraEmprestimo { get; set; }
 
         [Required(ErrorMessage = "A Data de Devolução é obrigatório o registro")]
